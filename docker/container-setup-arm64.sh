@@ -3,6 +3,7 @@
 set -eu
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)
+target_user="${1:-cs1680-user}"
 
 export DEBIAN_FRONTEND=noninteractive
 export TZ=America/New_York
@@ -65,5 +66,5 @@ for i in addr2line c++filt cpp-11 g++-11 gcc-11 gcov-11 gcov-dump-11 gcov-tool-1
 # Do main setup
 $SCRIPT_DIR/container-setup-common
 # Install golang
-bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.22.4.linux-arm64.tar.gz | sudo tar -xvz -C /usr/local"
+bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.25.5.linux-arm64.tar.gz | sudo tar -xvz -C /usr/local"
 

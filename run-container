@@ -77,7 +77,7 @@ myfileid=`stat $statformatarg %d:%i "${BASH_SOURCE[0]}" 2>/dev/null`
 dir="`pwd`"
 subdir=""
 while test "$dir" != / -a "$dir" != ""; do
-    thisfileid=`stat $statformatarg %d:%i "$dir"/${BASH_SOURCE[0]} 2>/dev/null`
+    thisfileid=`stat $statformatarg %d:%i "$dir"/$(basename ${BASH_SOURCE[0]}) 2>/dev/null`
     if test -n "$thisfileid" -a "$thisfileid" = "$myfileid"; then
         maindir="$dir"
         break
@@ -177,7 +177,7 @@ create_network() {
 }
 
 get_network_info() {
-    docker network inspect "${network_name}"
+    $container_runtime network inspect "${network_name}"
 }
 
 remove_network() {
