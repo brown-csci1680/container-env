@@ -78,7 +78,9 @@ apt-get -y install\
 apt-get -y install \
 	python3-scapy \
 	python3-pexpect \
-	python3-requests
+	python3-requests \
+	python3-yaml \
+	python3-dacite
 
 apt-get -y install \
 	golang-goprotobuf-dev golang-google-protobuf-dev
