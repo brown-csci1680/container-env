@@ -118,9 +118,6 @@ fi
 
 # CS1680:  These environment variables tell our shell
 # about the locations of the Go and Rust toolchains
-export CARGO_HOME=/opt/rust
-export RUSTUP_HOME=/opt/rust
-export PATH=$PATH:/opt/rust/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 
