@@ -11,8 +11,10 @@ export TZ=America/New_York
 # set up default locale
 export LANG=en_US.UTF-8
 
-apt-get update &&\
-  yes | unminimize
+apt-get update
+
+apt-get -y install unminimize &&\
+    yes | unminimize
 
 # install GCC-related packages
 apt-get update && apt-get -y install\
@@ -28,7 +30,7 @@ apt-get update && apt-get -y install\
  libblas-dev\
  liblapack-dev\
  liblapack-doc\
- libstdc++-11-doc\
+ libstdc++-13-doc\
  make\
  make-doc\
  locales
@@ -38,6 +40,6 @@ apt-get update && apt-get -y install\
 $SCRIPT_DIR/container-setup-common $target_user
 
 # Install golang
-bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.25.5.linux-amd64.tar.gz | sudo tar -xvz -C /usr/local"
+bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.26.4.linux-amd64.tar.gz | sudo tar -xvz -C /usr/local"
 
 

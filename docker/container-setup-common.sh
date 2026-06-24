@@ -88,10 +88,13 @@ apt-get -y install \
 
 echo "wireshark-common wireshark-common/install-setuid boolean true" | sudo debconf-set-selections
 
+# Install rust
+apt-get -y install cargo rustc
+
 # Rust
-export RUSTUP_HOME=/opt/rust
-export CARGO_HOME=/opt/rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -E sh -s -- -y
+#export RUSTUP_HOME=/opt/rust
+#export CARGO_HOME=/opt/rust
+#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sudo -E sh -s -- -y
 
 # ###### Graphical setup ######
 # Install wireshark and xterm (as a graphical demo)
@@ -100,7 +103,7 @@ apt-get -y install xterm wireshark tshark
 # Install xpra (used for backup display method if X11 forwarding doesn't work)
 UBUNTU_VERSION=$(cat /etc/os-release | grep UBUNTU_CODENAME | sed 's/UBUNTU_CODENAME=//') && \
     curl http://xpra.org/gpg.asc | apt-key add - && \
-    echo "deb http://xpra.org/ $UBUNTU_VERSION main" >> /etc/apt/sources.list.d/xpra.list
+    wget -O "/usr/share/keyrings/xpra.asc" https://xpra.org/xpra.asc \
     apt-get update && \
     apt-get install -y --no-install-recommends xpra xpra-html5 xpra-x11
 

@@ -10,7 +10,9 @@ export TZ=America/New_York
 export LANG=en_US.UTF-8
 
 
-apt-get update &&\
+apt-get update
+
+apt-get -y install unminimize &&\
   yes | unminimize
 
 # include multiarch support
@@ -37,13 +39,13 @@ apt-get update && apt-get -y install\
  libblas-dev\
  liblapack-dev\
  liblapack-doc\
- libstdc++-11-doc\
+ libstdc++-13-doc\
  make\
  make-doc
 
 # install GCC-related packages for amd64
 apt-get -y install\
-	g++-13-x86-64-linux-gnu\
+	g++-16-x86-64-linux-gnu\
 	gdb-multiarch\
 	libc6:amd64\
 	libstdc++6:amd64\
@@ -56,17 +58,17 @@ apt-get -y install\
 	qemu-user
 
 # # link x86-64 versions of common tools into /usr/x86_64-linux-gnu/bin
-for i in addr2line c++filt cpp-13 g++-13 gcc-13 gcov-13 gcov-dump-13 gcov-tool-13 size strings; do \
+for i in addr2line c++filt cpp-16 g++-16 gcc-16 gcov-16 gcov-dump-16 gcov-tool-16 size strings; do \
     ln -s /usr/bin/x86_64-linux-gnu-$i /usr/x86_64-linux-gnu/bin/$i; done && \
-    ln -s /usr/bin/x86_64-linux-gnu-cpp-13 /usr/x86_64-linux-gnu/bin/cpp && \
-    ln -s /usr/bin/x86_64-linux-gnu-g++-13 /usr/x86_64-linux-gnu/bin/c++ && \
-    ln -s /usr/bin/x86_64-linux-gnu-g++-13 /usr/x86_64-linux-gnu/bin/g++ && \
-    ln -s /usr/bin/x86_64-linux-gnu-gcc-13 /usr/x86_64-linux-gnu/bin/gcc && \
-    ln -s /usr/bin/x86_64-linux-gnu-gcc-13 /usr/x86_64-linux-gnu/bin/cc && \
+    ln -s /usr/bin/x86_64-linux-gnu-cpp-16 /usr/x86_64-linux-gnu/bin/cpp && \
+    ln -s /usr/bin/x86_64-linux-gnu-g++-16 /usr/x86_64-linux-gnu/bin/c++ && \
+    ln -s /usr/bin/x86_64-linux-gnu-g++-16 /usr/x86_64-linux-gnu/bin/g++ && \
+    ln -s /usr/bin/x86_64-linux-gnu-gcc-16 /usr/x86_64-linux-gnu/bin/gcc && \
+    ln -s /usr/bin/x86_64-linux-gnu-gcc-16 /usr/x86_64-linux-gnu/bin/cc && \
     ln -s /usr/bin/gdb-multiarch /usr/x86_64-linux-gnu/bin/gdb
 
 # Do main setup
 $SCRIPT_DIR/container-setup-common
 # Install golang
-bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.25.5.linux-arm64.tar.gz | sudo tar -xvz -C /usr/local"
+bash -c "mkdir /usr/local/go && wget -O - https://go.dev/dl/go1.26.4.linux-arm64.tar.gz | sudo tar -xvz -C /usr/local"
 

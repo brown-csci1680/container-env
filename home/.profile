@@ -28,4 +28,3 @@ fi
 
 export PATH="$PATH:$HOME/go/bin"
 
-. "/opt/rust/env"
