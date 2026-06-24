@@ -4,9 +4,6 @@ This repo contains a minimal dev environment setup for CS 1680. In
 particular, it provides the scripts to create the course Docker
 container.
 
-This repo contains a minimal dev environment setup for CS 1660. In particular,
-it provides the scripts to create the course Docker container.
-
 ## Getting started (for students)
 
 ```bash
@@ -95,7 +92,7 @@ for both architectures, which will take some time.  If you encounter
 problems, see the "Alternate method" below.
 
 When the build completes, check [this
-page](https://github.com/brown-csci1660/container-dev/pkgs/container/cs1660-dev),
+page](https://github.com/brown-csci1680/container-dev/pkgs/container/cs1680-dev),
 which lists the current published images.  You should see recent
 updated image versions for the tag `latest` **and** `arm64`, which
 corresponds to each architecture.
